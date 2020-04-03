@@ -40,7 +40,7 @@ public class MainActivity extends AppCompatActivity {
             if (!checkInput(et_username,et_password)){
                 return;
             }
-            
+
             /*
             String[] data = Gobind.login(et_url.getText().toString(), et_username.getText().toString(), et_password.getText().toString());
             if (data.length() != 2){

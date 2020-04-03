@@ -6,7 +6,7 @@ import (
 )
 
 // Login loggs in
-func Login(url, username, password string) [2]string {
+func Login(url, username, password string) string {
 	//Do request
 	conf := models.Config{}
 	conf.Server.URL = url
@@ -20,14 +20,14 @@ func Login(url, username, password string) [2]string {
 	}, &conf).Do(&response)
 
 	if err != nil {
-		return [2]string{}
+		return ""
 	}
 
 	if resp.Status == server.ResponseError && resp.HTTPCode == 403 {
-		return [2]string{}
+		return ""
 	} else if resp.Status == server.ResponseSuccess && len(response.Token) > 0 {
-		return [2]string{response.Namespace, response.Token}
+		return response.Token
 	}
 
-	return [2]string{}
+	return ""
 }
