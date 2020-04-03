@@ -1,8 +1,11 @@
 <resources>
     <string name="app_name">Data Manager</string>
 
+    <!-- Activities -->
+    <string name="activity_home">Home</string>
+
     <!--  titles -->
-    <string name="tv_login_title">Login</string>
+        <string name="tv_login_title">Login</string>
 
     <!-- Hints -->
     <string name="hint_login_url">Server url</string>
