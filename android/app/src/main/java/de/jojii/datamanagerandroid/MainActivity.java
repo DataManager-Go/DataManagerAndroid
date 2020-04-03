@@ -41,16 +41,12 @@ public class MainActivity extends AppCompatActivity {
                 return;
             }
 
-            /*
-            String[] data = Gobind.login(et_url.getText().toString(), et_username.getText().toString(), et_password.getText().toString());
+            String data = Gobind.login(et_url.getText().toString(), et_username.getText().toString(), et_password.getText().toString());
             if (data.length() != 2){
                 Toast.makeText(this, "Error logging in!", Toast.LENGTH_SHORT).show();
             }else{
-                Toast.makeText(this, data[1], Toast.LENGTH_SHORT).show();
+                Toast.makeText(this, data, Toast.LENGTH_SHORT).show();
             }
-
-
-             */
 
         });
 

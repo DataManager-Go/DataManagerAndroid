@@ -1,6 +1,8 @@
 package gobind
 
 import (
+	"fmt"
+
 	"github.com/Yukaru-san/DataManager_Client/models"
 	"github.com/Yukaru-san/DataManager_Client/server"
 )
@@ -20,14 +22,16 @@ func Login(url, username, password string) string {
 	}, &conf).Do(&response)
 
 	if err != nil {
+		fmt.Println(err)
 		return ""
 	}
 
 	if resp.Status == server.ResponseError && resp.HTTPCode == 403 {
+		fmt.Println(err)
 		return ""
 	} else if resp.Status == server.ResponseSuccess && len(response.Token) > 0 {
 		return response.Token
 	}
 
-	return ""
+	return "err"
 }
