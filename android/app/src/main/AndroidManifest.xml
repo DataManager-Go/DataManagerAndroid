@@ -11,6 +11,7 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
+        <activity android:name=".FileList"></activity>
         <activity android:name=".MainActivity">
             <meta-data
                 android:name="android.app.lib_name"
@@ -22,7 +23,9 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".HomeActivity" android:label="@string/activity_home"/>
+        <activity
+            android:name=".HomeActivity"
+            android:label="@string/activity_home" />
     </application>
 
 </manifest>

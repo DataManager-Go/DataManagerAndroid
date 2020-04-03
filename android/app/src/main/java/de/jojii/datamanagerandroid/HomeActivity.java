@@ -60,6 +60,12 @@ public class HomeActivity extends AppCompatActivity {
         rv_recent_files = findViewById(R.id.rv_recent_files);
         srl = findViewById(R.id.refreshLayoutHome);
 
+        lv_namespaces.setOnItemClickListener((parent, view, position, id) -> {
+            ArrayAdapter<String> aa = (ArrayAdapter<String>)lv_namespaces.getAdapter();
+            String namespace =  aa.getItem(position);
+            openFileListActivity(namespace);
+        });
+
         srl.setOnRefreshListener(() -> {
             load();
             srl.setRefreshing(false);
@@ -71,11 +77,19 @@ public class HomeActivity extends AppCompatActivity {
     private void load(){
         // Load all data
         GlobalData.loadAll();
+
         ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, R.layout.lv_namespace_items, GlobalData.getNamespaces());
         lv_namespaces.setAdapter(adapter);
+        lv_namespaces.deferNotifyDataSetChanged();
+
         tv_namespaces.setText(String.valueOf(GlobalData.getNamespaces().length));
     }
 
+    private void openFileListActivity(String namespace){
+        Intent i = new Intent(HomeActivity.this, FileList.class);
+        i.putExtra("ns", namespace);
+        startActivity(i);
+    }
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
