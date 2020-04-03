@@ -1,6 +1,7 @@
 package gobind
 
 import (
+	"encoding/json"
 	"fmt"
 	"log"
 	"net/http"
@@ -48,7 +49,7 @@ func Login(url, username, password string) string {
 }
 
 // ListNamespaces list namespaces
-func ListNamespaces(url string, token string) server.StringSliceResponse {
+func ListNamespaces(url string, token string) string {
 	config := models.Config{}
 	config.Server.URL = url
 
@@ -62,15 +63,16 @@ func ListNamespaces(url string, token string) server.StringSliceResponse {
 	if err != nil {
 		if response != nil {
 			fmt.Println("http:", response.HTTPCode)
-			return server.StringSliceResponse{}
+			return ""
 		}
 		log.Fatalln(err)
 	}
 
 	if response.Status == server.ResponseError {
 		fmt.Println(response.Message)
-		return server.StringSliceResponse{}
+		return ""
 	}
 
-	return resp
+	s, _ := json.Marshal(resp.Slice)
+	return string(s)
 }
