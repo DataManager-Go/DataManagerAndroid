@@ -20,17 +20,19 @@ import java.net.URL;
 
 import gobind.Gobind;
 
+import static constants.Constants.prefServer;
+import static constants.Constants.prefToken;
+import static constants.Constants.prefUser;
+import static constants.Constants.preferences;
+
 
 public class MainActivity extends AppCompatActivity {
-    final String prefToken = "token";
-    final String prefServer = "surl";
-    final String prefUser = "user";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        SharedPreferences sharedpreferences = getSharedPreferences("userData", Context.MODE_PRIVATE);
+        SharedPreferences sharedpreferences = getSharedPreferences(preferences, Context.MODE_PRIVATE);
         SharedPreferences.Editor editor = sharedpreferences.edit();
 
         // Check already logged in
@@ -68,7 +70,7 @@ public class MainActivity extends AppCompatActivity {
 
             pb_load.setVisibility(View.VISIBLE);
 
-            // Check if client can connect to tservec
+            // Check if client can connect to server
             String cnnct = Gobind.canConnect(et_url.getText().toString());
             if (cnnct.length() > 0){
                 Toast.makeText(this, "Can't connect to server: "+cnnct, Toast.LENGTH_SHORT).show();
@@ -79,6 +81,7 @@ public class MainActivity extends AppCompatActivity {
             String data = Gobind.login(et_url.getText().toString(), et_username.getText().toString(), et_password.getText().toString());
             if (data.length() != 64){
                 Toast.makeText(this, "Error logging in!", Toast.LENGTH_SHORT).show();
+                pb_load.setVisibility(View.GONE);
             }else{
                 editor.putString(prefToken, data);
                 editor.putString(prefServer, et_url.getText().toString());
@@ -89,6 +92,7 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+        et_url.findFocus();
     }
 
     private void startHome(){

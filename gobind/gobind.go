@@ -2,6 +2,7 @@ package gobind
 
 import (
 	"fmt"
+	"log"
 	"net/http"
 
 	"github.com/Yukaru-san/DataManager_Client/models"
@@ -44,4 +45,32 @@ func Login(url, username, password string) string {
 	}
 
 	return "err"
+}
+
+// ListNamespaces list namespaces
+func ListNamespaces(url string, token string) server.StringSliceResponse {
+	config := models.Config{}
+	config.Server.URL = url
+
+	var resp server.StringSliceResponse
+
+	response, err := server.NewRequest(server.EPNamespaceList, nil, &config).WithAuth(server.Authorization{
+		Type:    server.Bearer,
+		Palyoad: token,
+	}).Do(&resp)
+
+	if err != nil {
+		if response != nil {
+			fmt.Println("http:", response.HTTPCode)
+			return server.StringSliceResponse{}
+		}
+		log.Fatalln(err)
+	}
+
+	if response.Status == server.ResponseError {
+		fmt.Println(response.Message)
+		return server.StringSliceResponse{}
+	}
+
+	return resp
 }
