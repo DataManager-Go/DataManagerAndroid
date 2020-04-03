@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 *.iml
 .gradle
 /local.properties
@@ -12,6 +13,8 @@
 /captures
 .externalNativeBuild
 .cxx
+=======
+>>>>>>> be1ef5a2a2e3676c0f692ed7b75075f9ca605483
 # Built application files
 *.apk
 *.aar
