@@ -7,6 +7,8 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.Toast;
 
+import test.Test;
+
 public class MainActivity extends AppCompatActivity {
     private Button b;
 
@@ -19,9 +21,10 @@ public class MainActivity extends AppCompatActivity {
         b.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
+                Toast.makeText(MainActivity.this, Test.greet(), Toast.LENGTH_SHORT).show();
             }
         });
 
     }
+
 }
