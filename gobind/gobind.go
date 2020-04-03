@@ -5,16 +5,12 @@ import (
 	"github.com/Yukaru-san/DataManager_Client/server"
 )
 
-// Greet greets
-func Greet() string {
-	return "greetings"
-}
-
 // Login loggs in
-func Login(url, username, password string) []string {
+func Login(url, username, password string) [2]string {
 	//Do request
 	conf := models.Config{}
 	conf.Server.URL = url
+	conf.Server.IgnoreCert = false
 
 	var response server.LoginResponse
 
@@ -24,14 +20,14 @@ func Login(url, username, password string) []string {
 	}, &conf).Do(&response)
 
 	if err != nil {
-		return []string{}
+		return [2]string{}
 	}
 
 	if resp.Status == server.ResponseError && resp.HTTPCode == 403 {
-		return []string{}
+		return [2]string{}
 	} else if resp.Status == server.ResponseSuccess && len(response.Token) > 0 {
-		return []string{response.Namespace, response.Token}
+		return [2]string{response.Namespace, response.Token}
 	}
 
-	return []string{}
+	return [2]string{}
 }

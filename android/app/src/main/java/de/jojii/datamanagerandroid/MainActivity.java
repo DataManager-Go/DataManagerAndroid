@@ -12,6 +12,7 @@ import java.net.URL;
 
 import gobind.Gobind;
 
+
 public class MainActivity extends AppCompatActivity {
 
     @Override
@@ -39,13 +40,18 @@ public class MainActivity extends AppCompatActivity {
             if (!checkInput(et_username,et_password)){
                 return;
             }
-
-            String token = Gobind.login(et_url.getText().toString(), et_username.getText().toString(), et_password.getText().toString());
-            if (token == null || token.length() == 0) {
+            
+            /*
+            String[] data = Gobind.login(et_url.getText().toString(), et_username.getText().toString(), et_password.getText().toString());
+            if (data.length() != 2){
                 Toast.makeText(this, "Error logging in!", Toast.LENGTH_SHORT).show();
             }else{
-                Toast.makeText(this, token, Toast.LENGTH_SHORT).show();
+                Toast.makeText(this, data[1], Toast.LENGTH_SHORT).show();
             }
+
+
+             */
+
         });
 
     }
