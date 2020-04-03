@@ -2,10 +2,20 @@ package gobind
 
 import (
 	"fmt"
+	"net/http"
 
 	"github.com/Yukaru-san/DataManager_Client/models"
 	"github.com/Yukaru-san/DataManager_Client/server"
 )
+
+// CanConnect return true if go can connect to internet
+func CanConnect() bool {
+	_, err := http.Get("http://golang.org/")
+	if err != nil {
+		return false
+	}
+	return true
+}
 
 // Login loggs in
 func Login(url, username, password string) string {
