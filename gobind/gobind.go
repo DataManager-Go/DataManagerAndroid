@@ -9,12 +9,12 @@ import (
 )
 
 // CanConnect return true if go can connect to internet
-func CanConnect() bool {
+func CanConnect() string {
 	_, err := http.Get("http://golang.org/")
 	if err != nil {
-		return false
+		return err.Error()
 	}
-	return true
+	return ""
 }
 
 // Login loggs in

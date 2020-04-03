@@ -41,6 +41,12 @@ public class MainActivity extends AppCompatActivity {
                 return;
             }
 
+            String cnnct = Gobind.canConnect();
+            if (cnnct.length() > 0){
+                Toast.makeText(this, "Can't connect to wifi: "+cnnct, Toast.LENGTH_SHORT).show();
+                return;
+            }
+
             String data = Gobind.login(et_url.getText().toString(), et_username.getText().toString(), et_password.getText().toString());
             if (data.length() != 2){
                 Toast.makeText(this, "Error logging in!", Toast.LENGTH_SHORT).show();
