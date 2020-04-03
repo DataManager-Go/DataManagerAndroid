@@ -2,6 +2,9 @@ package de.jojii.datamanagerandroid;
 
 import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
+import android.widget.SeekBar;
+import android.widget.Toast;
+
 import com.google.android.material.textfield.TextInputEditText;
 
 import java.net.MalformedURLException;
@@ -37,7 +40,12 @@ public class MainActivity extends AppCompatActivity {
                 return;
             }
 
-            Gobind.Login(et_url.getText().toString(), et_username.getText().toString(), et_password.getText().toString());
+            String token = Gobind.login(et_url.getText().toString(), et_username.getText().toString(), et_password.getText().toString());
+            if (token == null || token.length() == 0) {
+                Toast.makeText(this, "Error logging in!", Toast.LENGTH_SHORT).show();
+            }else{
+                Toast.makeText(this, token, Toast.LENGTH_SHORT).show();
+            }
         });
 
     }
