@@ -68,9 +68,10 @@ public class MainActivity extends AppCompatActivity {
 
             pb_load.setVisibility(View.VISIBLE);
 
+            // Check if client can connect to tservec
             String cnnct = Gobind.canConnect(et_url.getText().toString());
             if (cnnct.length() > 0){
-                Toast.makeText(this, "Can't connect to wifi: "+cnnct, Toast.LENGTH_SHORT).show();
+                Toast.makeText(this, "Can't connect to server: "+cnnct, Toast.LENGTH_SHORT).show();
                 pb_load.setVisibility(View.GONE);
                 return;
             }
