@@ -68,7 +68,7 @@ public class MainActivity extends AppCompatActivity {
 
             pb_load.setVisibility(View.VISIBLE);
 
-            String cnnct = Gobind.canConnect();
+            String cnnct = Gobind.canConnect(et_url.getText().toString());
             if (cnnct.length() > 0){
                 Toast.makeText(this, "Can't connect to wifi: "+cnnct, Toast.LENGTH_SHORT).show();
                 pb_load.setVisibility(View.GONE);

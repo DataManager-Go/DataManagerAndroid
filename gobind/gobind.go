@@ -9,8 +9,8 @@ import (
 )
 
 // CanConnect return true if go can connect to internet
-func CanConnect() string {
-	_, err := http.Get("http://golang.org/")
+func CanConnect(u string) string {
+	_, err := http.Get(u)
 	if err != nil {
 		return err.Error()
 	}
