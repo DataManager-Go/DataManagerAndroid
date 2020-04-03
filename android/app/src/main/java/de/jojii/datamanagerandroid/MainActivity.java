@@ -7,7 +7,7 @@ import com.google.android.material.textfield.TextInputEditText;
 import java.net.MalformedURLException;
 import java.net.URL;
 
-import gobind.*;
+import gobind.Gobind;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -37,6 +37,7 @@ public class MainActivity extends AppCompatActivity {
                 return;
             }
 
+            Gobind.Login(et_url.getText().toString(), et_username.getText().toString(), et_password.getText().toString());
         });
 
     }
