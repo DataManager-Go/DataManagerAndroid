@@ -76,7 +76,10 @@ public class HomeActivity extends AppCompatActivity {
 
     private void load(){
         // Load all data
-        GlobalData.loadAll();
+        if (!GlobalData.loadAll()){
+            logout();
+            return;
+        }
 
         ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, R.layout.lv_namespace_items, GlobalData.getNamespaces());
         lv_namespaces.setAdapter(adapter);

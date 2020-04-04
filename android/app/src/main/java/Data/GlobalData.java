@@ -18,7 +18,7 @@ public class GlobalData {
     }
 
     // Load namespaces
-    public static void loadNamespaces() {
+    public static boolean loadNamespaces() {
         String ns = Gobind.listNamespaces(url, token);
         if (ns.startsWith("[") && ns.endsWith("]")){
             try {
@@ -30,17 +30,22 @@ public class GlobalData {
                 Namespaces = items;
             } catch (JSONException e) {
                 e.printStackTrace();
+                return false;
             }
         }
+
+        return true;
     }
 
-    public static void loadGroups() {
-
+    public static boolean loadGroups() {
+        return true;
     }
 
-    public static void loadAll() {
-        loadNamespaces();
-        loadGroups();
+    public static boolean loadAll() {
+        if (!loadNamespaces()) {
+            return false;
+        }
+        return loadGroups();
     }
 
     public static String[] getNamespaces() {

@@ -7,6 +7,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.provider.Settings;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.ProgressBar;
@@ -77,8 +78,9 @@ public class MainActivity extends AppCompatActivity {
                 pb_load.setVisibility(View.GONE);
                 return;
             }
+            String android_id = Settings.Secure.getString(getApplicationContext().getContentResolver();
 
-            String data = Gobind.login(et_url.getText().toString(), et_username.getText().toString(), et_password.getText().toString());
+            String data = Gobind.login(et_url.getText().toString(), et_username.getText().toString(), et_password.getText().toString(), android_id);
             if (data.length() != 64){
                 Toast.makeText(this, "Error logging in!", Toast.LENGTH_SHORT).show();
                 pb_load.setVisibility(View.GONE);

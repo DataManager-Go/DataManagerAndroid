@@ -20,9 +20,11 @@ func CanConnect(u string) string {
 }
 
 // Login loggs in
-func Login(url, username, password string) string {
+func Login(url, username, password, machineID string) string {
 	//Do request
-	conf := models.Config{}
+	conf := models.Config{
+		MachineID: machineID,
+	}
 	conf.Server.URL = url
 	conf.Server.IgnoreCert = false
 
