@@ -24,7 +24,7 @@ public class FileList extends AppCompatActivity {
         }
         setTitle(namespace);
 
-        String f = Gobind.listFiles(GlobalData.token, GlobalData.url, "", namespace, ",",0);
+        String f = Gobind.listFiles(GlobalData.token, GlobalData.url, "", namespace, "","",0);
         Toast.makeText(this, f, Toast.LENGTH_SHORT).show();
     }
 }
