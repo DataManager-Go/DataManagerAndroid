@@ -21,4 +21,7 @@
 
     <!-- Menu -->
     <string name="menu_logout">Logout</string>
+
+    <!-- Toasts -->
+    <string name="msg_logged_out">You have been logged out</string>
 </resources>

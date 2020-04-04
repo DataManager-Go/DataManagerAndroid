@@ -116,6 +116,7 @@ public class HomeActivity extends AppCompatActivity {
 
     // Remove local preferences and start login activity
     private void logout(){
+        Toast.makeText(this, getString(R.string.msg_logged_out), Toast.LENGTH_LONG).show();
         editor.remove(prefServer);
         editor.remove(prefToken);
         editor.remove(prefUser);
