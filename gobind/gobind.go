@@ -5,6 +5,7 @@ import (
 	"fmt"
 	"log"
 	"net/http"
+	"strings"
 
 	"github.com/Yukaru-san/DataManager_Client/models"
 	"github.com/Yukaru-san/DataManager_Client/server"
@@ -82,11 +83,11 @@ func ListNamespaces(url string, token string) string {
 func ListFiles(token, url, name, namespace, group, tag string, id int) string {
 	tags := []string{}
 	if len(tag) > 0 {
-		tags = append(tags, tag)
+		tags = strings.Split(tag, ",")
 	}
 	groups := []string{}
 	if len(group) > 0 {
-		groups = append(groups, group)
+		groups = strings.Split(group, ",")
 	}
 
 	config := models.Config{}

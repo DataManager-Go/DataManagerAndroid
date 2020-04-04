@@ -14,6 +14,8 @@
     <string name="hint_login_url">Server url</string>
     <string name="hint_login_username">Username</string>
     <string name="hint_login_password">Password</string>
+    <string name="hint_search">Search</string>
+    <string name="hint_no_files_available">No files here</string>
 
     <!-- Buttons -->
     <string name="button_login">Login</string>

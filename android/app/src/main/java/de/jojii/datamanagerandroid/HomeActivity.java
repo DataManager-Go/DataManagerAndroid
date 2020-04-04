@@ -90,7 +90,7 @@ public class HomeActivity extends AppCompatActivity {
     }
 
     private void openFileListActivity(String namespace){
-        Intent i = new Intent(HomeActivity.this, FileList.class);
+        Intent i = new Intent(HomeActivity.this, FileListActivity.class);
         i.putExtra("ns", namespace);
         startActivity(i);
     }

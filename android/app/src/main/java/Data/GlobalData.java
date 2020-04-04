@@ -12,7 +12,6 @@ public class GlobalData {
     public static void setToken(String token) {
         GlobalData.token = token;
     }
-
     public static void setUrl(String url) {
         GlobalData.url = url;
     }
