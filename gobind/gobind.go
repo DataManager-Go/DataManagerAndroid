@@ -77,36 +77,3 @@ func ListNamespaces(url string, token string) string {
 	s, _ := json.Marshal(resp.Slice)
 	return string(s)
 }
-
-// ListFiles lists files
-func ListFiles(token, url, name, namespace, group string, id int) string {
-	groups := []string{}
-	if len(group) > 0 {
-		groups = append(groups, group)
-	}
-
-	config := models.Config{}
-	config.Server.URL = url
-
-	var filesResponse server.FileListResponse
-	response, err := server.NewRequest(server.EPFileList, &server.FileListRequest{
-		FileID: uint(id),
-		Name:   name,
-		Attributes: models.FileAttributes{
-			Groups: groups,
-		},
-		OptionalParams: server.OptionalRequetsParameter{
-			Verbose: 3,
-		},
-	}, &config).WithAuth(server.Authorization{
-		Type:    server.Bearer,
-		Palyoad: token,
-	}).Do(&filesResponse)
-
-	if err != nil || response.Status == server.ResponseError {
-		return ""
-	}
-
-	s, _ := json.Marshal(filesResponse.Files)
-	return string(s)
-}

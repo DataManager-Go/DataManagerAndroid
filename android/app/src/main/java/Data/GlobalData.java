@@ -6,7 +6,7 @@ import org.json.JSONException;
 import gobind.Gobind;
 
 public class GlobalData {
-    private static String url, token;
+    public static String url, token;
     private static String[] Namespaces, Groups;
 
     public static void setToken(String token) {

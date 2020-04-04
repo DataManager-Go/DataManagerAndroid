@@ -6,6 +6,9 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.widget.Toast;
 
+import Data.GlobalData;
+import gobind.Gobind;
+
 public class FileList extends AppCompatActivity {
 
     @Override
@@ -20,5 +23,8 @@ public class FileList extends AppCompatActivity {
             return;
         }
         setTitle(namespace);
+
+        String f = Gobind.listFiles(GlobalData.token, GlobalData.url, "", namespace, ",",0);
+        Toast.makeText(this, f, Toast.LENGTH_SHORT).show();
     }
 }
