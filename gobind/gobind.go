@@ -22,17 +22,16 @@ func CanConnect(u string) string {
 // Login loggs in
 func Login(url, username, password, machineID string) string {
 	//Do request
-	conf := models.Config{
-		MachineID: machineID,
-	}
+	conf := models.Config{}
 	conf.Server.URL = url
 	conf.Server.IgnoreCert = false
 
 	var response server.LoginResponse
 
 	resp, err := server.NewRequest(server.EPLogin, server.CredentialsRequest{
-		Password: password,
-		Username: username,
+		Password:  password,
+		Username:  username,
+		MachineID: machineID,
 	}, &conf).Do(&response)
 
 	if err != nil {

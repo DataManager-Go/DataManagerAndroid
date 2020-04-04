@@ -33,6 +33,8 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
+        String android_id = Settings.Secure.getString(getApplicationContext().getContentResolver(), Settings.Secure.ANDROID_ID);
+
         SharedPreferences sharedpreferences = getSharedPreferences(preferences, Context.MODE_PRIVATE);
         SharedPreferences.Editor editor = sharedpreferences.edit();
 
@@ -78,7 +80,6 @@ public class MainActivity extends AppCompatActivity {
                 pb_load.setVisibility(View.GONE);
                 return;
             }
-            String android_id = Settings.Secure.getString(getApplicationContext().getContentResolver();
 
             String data = Gobind.login(et_url.getText().toString(), et_username.getText().toString(), et_password.getText().toString(), android_id);
             if (data.length() != 64){

@@ -32,6 +32,8 @@ public class GlobalData {
                 e.printStackTrace();
                 return false;
             }
+        }else{
+            return false;
         }
 
         return true;
