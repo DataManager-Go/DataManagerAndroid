@@ -1,2 +1,2 @@
-# DataManager-Android
+# DataManagerAndroid
 A android client implementing the DataManager protocol
